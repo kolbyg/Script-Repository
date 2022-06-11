@@ -5,6 +5,7 @@
 $URI = "https://my-truenas-server.domain.com/api/v2.0"
 $token = "truenas api token"
 $DebugPreference = 'Continue'
+$LogFile = "C:\Scripts\tnds.log"; #Log file
 $SQLServerURI = "mysqlserver.domain.com"
 $SQLServerDB = "TrueNAS-Historical"
 $SQLDatasetUsageTableName = "DatasetUsage"
@@ -42,4 +43,17 @@ function WriteDetailsToDB($DatasetInfo){
         $Command.ExecuteNonQuery()
     }
 }
-GetDatasetDetails($token);
+
+try
+{
+    Start-Transcript -Append $LogFile
+    GetDatasetDetails($token);
+}
+catch
+{
+    Write-Error $_
+}
+finally
+{
+    Stop-Transcript
+}
