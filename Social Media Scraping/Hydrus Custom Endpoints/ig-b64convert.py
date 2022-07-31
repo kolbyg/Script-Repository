@@ -12,7 +12,11 @@ print('Content-Type: application/json')
 print('')
 args = cgi.parse()
 igid = args['igid'][0]
+#print(igid)
+if len(igid) > 12:
+	igid = igid[:11]
 intigid = int.from_bytes(base64.urlsafe_b64decode('A' * (12 - len(igid)) + igid), 'big')
+#print(intigid)
 url  = f"https://i.instagram.com/api/v1/media/{intigid}/info/"
 
 print(f'{{"newid":"{intigid}"}}')
