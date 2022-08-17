@@ -6,7 +6,7 @@ $URI = "https://my-truenas-server.domain.com/api/v2.0"
 $token = "truenas api token"
 $DebugPreference = 'Continue'
 $LogFile = "C:\Scripts\tnds.log"; #Log file
-$SQLServerURI = "mysqlserver.domain.com"
+$SQLServerURI = "sqlserver.domain.com"
 $SQLServerDB = "TrueNAS-Historical"
 $SQLDatasetUsageTableName = "DatasetUsage"
 
